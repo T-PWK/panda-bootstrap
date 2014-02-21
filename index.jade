@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    each post in posts
+        .blog-post
+            h2.blog-post-title= post.title
+            p.blog-post-meta 
+                = $date(post, 'MMMM DD, YYYY')
+                |  by  
+                a(href="#")= post.author.name
+
+            = post.teaser
+    ul.pager
+        if pagination.newer
+            li.previous: a(href=$pageUrl(true)) &larr; Newer
+        if pagination.older
+            li.next: a(href=$pageUrl(false)) Older &rarr;
