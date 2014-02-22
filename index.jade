@@ -3,7 +3,7 @@ extends layout
 block content
     each post in posts
         .blog-post
-            h2.blog-post-title= post.title
+            h2.blog-post-title: a(href= $url(post))= post.title
             p.blog-post-meta 
                 = $date(post, 'MMMM DD, YYYY')
                 |  by  

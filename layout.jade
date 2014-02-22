@@ -29,15 +29,12 @@ html
         .blog-masthead
             .container
                 nav.blog-nav
-                    a.blog-nav-item.active(href="#") Home
-                    a.blog-nav-item(href="#") New features
-                    a.blog-nav-item(href="#") Press
-                    a.blog-nav-item(href="#") New hires
-                    a.blog-nav-item(href="#") About
+                    a.blog-nav-item(href="/", class=$if('active', context, '/')) Home
+                    a.blog-nav-item(href="/about", class=$if('active', context, '/about')) About
 
         .container
             .blog-header
-                h1.blog-title= title
+                h1.blog-title: a(href=url)= title
                 p.lead.blog-description= description
 
             .row
@@ -48,7 +45,7 @@ html
                     .sidebar-module.sidebar-module-inset
                         h4 About
                         p Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
-                    .sidebar-module
+                    .sidebar-module.sidebar-module-inset
                         h4 Archives
                         ol.list-unstyled
                             li: a(href="/2014/02") February 2014
@@ -56,12 +53,16 @@ html
                             li: a(href="/2013/12") December 2013
                             li: a(href="/2013/11") November 2013
                             li: a(href="/2013/10") October 2013
-                    .sidebar-module
+                    .sidebar-module.sidebar-module-inset
                         h4 Elsewhere
                         ol.list-unstyled
                             li: a(href="#") GitHub
                             li: a(href="#") Twitter
                             li: a(href="#") Facebook
+
+        .blog-footer
+            p!= copyright
+            p: a(href="#") Back to top
 
         //- Bootstrap core JavaScript
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js")
