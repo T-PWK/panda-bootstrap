@@ -2,16 +2,23 @@ extends layout
 
 block content
     each post in posts
-        .blog-post
-            h2.blog-post-title: a(href= $url(post))= post.title
+        .blog-post(itemscope, itemtype="http://schema.org/BlogPosting")
+            h2.blog-post-title(itemprop="name", title=post.title): a(href= $url(post), itemprop="url")= post.title
             p.blog-post-meta 
-                = $date(post, 'MMMM DD, YYYY')
+                time(datetime=$date(post), itemprop="datePublished")= $date(post, 'MMMM DD, YYYY')
                 |  by  
                 a(href="#")= post.author.name
 
-            = post.teaser
-    ul.pager
-        if pagination.newer
-            li.previous: a(href=$pageUrl(true)) &larr; Newer
-        if pagination.older
-            li.next: a(href=$pageUrl(false)) Older &rarr;
+            section(itemprop="description")= post.teaser
+    .row.pager
+        .col-md-4
+            if pagination.newer
+                a(href=$pageUrl(true)) 
+                    i.fa.fa-angle-double-left
+                    |  Newer
+        .col-md-4.text-center Page #{pagination.page} of #{pagination.pages}
+        .col-md-4
+            if pagination.older
+                a.pull-right(href=$pageUrl(false))
+                    | Older 
+                    i.fa.fa-angle-double-right

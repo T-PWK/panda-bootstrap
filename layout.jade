@@ -17,6 +17,9 @@ html
         //- Custom styles for this template
         link(href="/assets/css/blog.css", rel="stylesheet")
 
+        //- Awesome fonts
+        link(href="/shared/css/font-awesome.min.css", rel="stylesheet")
+
         //- <!-- Just for debugging purposes. Don't actually copy this line! -->
         //- <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -44,7 +47,10 @@ html
                 .col-sm-3.col-sm-offset-1.blog-sidebar
                     .sidebar-module.sidebar-module-inset
                         h4 About
-                        p Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
+                        p 
+                            if post
+                                img(src=author.image, style="display:block;")
+                            | Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
                     .sidebar-module.sidebar-module-inset
                         h4 Archives
                         ol.list-unstyled
@@ -56,9 +62,15 @@ html
                     .sidebar-module.sidebar-module-inset
                         h4 Elsewhere
                         ol.list-unstyled
-                            li: a(href="#") GitHub
-                            li: a(href="#") Twitter
-                            li: a(href="#") Facebook
+                            li: a(href="#")
+                                i.fa.fa-github
+                                |  GitHub
+                            li: a(href="#")
+                                i.fa.fa-twitter
+                                |  Twitter
+                            li: a(href="#")
+                                i.fa.fa-facebook-square
+                                |  Facebook
 
         .blog-footer
             p!= copyright
