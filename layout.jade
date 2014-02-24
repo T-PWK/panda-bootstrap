@@ -45,20 +45,24 @@ html
                     block content
                     
                 .col-sm-3.col-sm-offset-1.blog-sidebar
-                    .sidebar-module.sidebar-module-inset
-                        h4 About
-                        p 
-                            if post
-                                img(src=author.image, style="display:block;")
-                            | Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
-                    .sidebar-module.sidebar-module-inset
-                        h4 Archives
-                        ol.list-unstyled
-                            li: a(href="/2014/02") February 2014
-                            li: a(href="/2014/01") January 2014
-                            li: a(href="/2013/12") December 2013
-                            li: a(href="/2013/11") November 2013
-                            li: a(href="/2013/10") October 2013
+                    //- .sidebar-module.sidebar-module-inset
+                    //-     h4 About
+                    //-     p 
+                    //-         if post
+                    //-             img(src=author.image, style="display:block;")
+                    //-         =author.bio
+                    if archives
+                        .sidebar-module.sidebar-module-inset
+                            h4 Archives
+                            ol.list-unstyled
+                                each archive in archives
+                                    li: a(href=$date(archive.date, '/YYYY/MM'))= $date(archive.date, 'MMMM, YYYY')
+                    if labels
+                        .sidebar-module.sidebar-module-inset
+                            h4 Labels
+                            ul.list-inline
+                                each label in labels
+                                    li: a(href=$labelUrl(label.label))= label.label
                     .sidebar-module.sidebar-module-inset
                         h4 Elsewhere
                         ol.list-unstyled

@@ -1,24 +1,49 @@
 extends layout
 
 block content
+
+    //- Display posts
     each post in posts
         .blog-post(itemscope, itemtype="http://schema.org/BlogPosting")
             h2.blog-post-title(itemprop="name", title=post.title): a(href= $url(post), itemprop="url")= post.title
             p.blog-post-meta 
                 time(datetime=$date(post), itemprop="datePublished")= $date(post, 'MMMM DD, YYYY')
                 |  by  
-                a(href="#")= post.author.name
+                span(itemprop="author")
+                    if post.author.website
+                        a(href=post.author.website)= post.author.name
+                    else
+                        = post.author.name
 
-            section(itemprop="description")= post.teaser
-    .row.pager
-        .col-md-4
-            if pagination.newer
-                a(href=$pageUrl(true)) 
-                    i.fa.fa-angle-double-left
-                    |  Newer
-        .col-md-4.text-center Page #{pagination.page} of #{pagination.pages}
-        .col-md-4
-            if pagination.older
-                a.pull-right(href=$pageUrl(false))
-                    | Older 
-                    i.fa.fa-angle-double-right
+            section(itemprop="description")!= post.teaser
+
+            //- Post labels
+            if post.labels && post.labels.length
+                p.blog-labels 
+                    | Labels: 
+                    each label in post.labels
+                        span.badge(itemprop="keywords") #{label}
+                        | &nbsp;
+
+            p: a.btn.btn-primary.btn-xs(type="button", role="button", href=$url(post)) Read more 
+                i.fa.fa-angle-double-right
+
+    //- Message if there is no posts
+    unless posts.length
+        p No posts match your query. 
+            a(href=url) Show all posts
+
+    //- Display pagination
+    if pagination
+        .row.pager
+            .col-md-4
+                if pagination.newer
+                    a(href=$pageUrl(true)) 
+                        i.fa.fa-angle-double-left
+                        |  Newer
+            .col-md-4.text-center Page #{pagination.page} of #{pagination.pages}
+            .col-md-4
+                if pagination.older
+                    a.pull-right(href=$pageUrl(false))
+                        | Older 
+                        i.fa.fa-angle-double-right
