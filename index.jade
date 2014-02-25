@@ -15,7 +15,7 @@ block content
                     else
                         = post.author.name
 
-            section(itemprop="description")!= post.teaser
+            section(itemprop="description articleBody")!= post.teaser
 
             //- Post labels
             if post.labels && post.labels.length

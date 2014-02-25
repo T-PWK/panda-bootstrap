@@ -1,8 +1,8 @@
 extends layout
 
 block content
-    .blog-post
-        h2.blog-post-title= post.title
+    .blog-post(itemscope, itemtype="http://schema.org/BlogPosting")
+        h2.blog-post-title(itemprop="name")= post.title
         p &nbsp;
 
-        != post.content
+        section(itemprop="description articleBody")!= post.content
