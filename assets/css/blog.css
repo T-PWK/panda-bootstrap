@@ -29,6 +29,10 @@ h6, .h6 {
   }
 }
 
+@media (min-width: 768px) {
+  .pager
+}
+
 /*
  * Masthead for nav
  */
@@ -123,8 +127,15 @@ h6, .h6 {
 /* Pagination */
 .pager {
   margin-bottom: 60px;
-  text-align: left;
+  text-align: center;
   color: #999
+}
+
+.pager .pager-newer {
+  text-align: left;
+}
+.pager .pager-older {
+  text-align: right;
 }
 
 /*
