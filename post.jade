@@ -19,7 +19,7 @@ block content
                             img.img-circle.img-thumbnail.media-object.blog-author-img(src=author.image, alt=author.name, itemprop="image")
                         .media-body
                             h4.media-heading Written By
-                            p: small: strong(itemprop="name")= author.name
+                            h4: strong(itemprop="name")= author.name
                             if author.bio
                                 p.text-muted: small: em(itemprop="description")= author.bio
 
