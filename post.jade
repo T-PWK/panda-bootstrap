@@ -14,8 +14,9 @@ block content
             .row
                 .col-md-7.col-sm-8
                     .media(itemprop="author", itemscope, itemtype="http://schema.org/Person")
-                        a.pull-left(href=author.website, itemprop="url")
-                            img.img-circle.img-thumbnail.media-object.blog-author-img(src=author.image, itemprop="image")
+                        meta(content=author.website, itemprop="url")
+                        a.pull-left(href=author.website)
+                            img.img-circle.img-thumbnail.media-object.blog-author-img(src=author.image, alt=author.name, itemprop="image")
                         .media-body
                             h4.media-heading Written By
                             p: small: strong(itemprop="name")= author.name

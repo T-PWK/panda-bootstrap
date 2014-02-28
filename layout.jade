@@ -12,9 +12,9 @@ html
         //- Google Webmaster pagination hints
         if pagination
             if pagination.newer
-                meta(rel="prev", href=$pageUrl(true, true))
+                link(rel="prev", href=$pageUrl(true, true))
             if pagination.older
-                meta(rel="next", href=$pageUrl(false, true))
+                link(rel="next", href=$pageUrl(false, true))
 
         title= metaTitle
 
