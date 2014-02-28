@@ -12,16 +12,18 @@ block content
 
         footer.blog-post-footer
             .row
-                .col-md-7
+                .col-md-7.col-sm-8
                     .media
                         a.pull-left(href="#")
-                            img.img-circle.media-object(src=author.image)
+                            img.img-circle.img-thumbnail.media-object.blog-author-img(src=author.image)
                         .media-body
                             h4.media-heading Written By
                             p: small: strong= author.name
-                            p.text-muted: small: em= author.bio
 
-                .col-md-4.col-md-offset-1 
+                            if author.bio
+                                p.text-muted: small: em= author.bio
+
+                .col-md-4.col-md-offset-1.col-sm-4
                     h4 Share this post
                     ul.list-inline
                         li: a(href='http://twitter.com/share?text='+$encode(post.title)+'&url='+$url(true), onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"): i.fa.fa-fw.fa-lg.fa-twitter

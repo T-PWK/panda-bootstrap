@@ -33,14 +33,14 @@ block content
     //- Display pagination
     if pagination
         .row.pager
-            .col-md-4
+            .col-md-4.col-sm-4.col-xs-4.pager-newer
                 if pagination.newer
-                    a(href=$pageUrl(true)) 
+                    a.pager-newer(href=$pageUrl(true)) 
                         i.fa.fa-angle-double-left
                         |  Newer
-            .col-md-4.text-center Page #{pagination.page} of #{pagination.pages}
-            .col-md-4
+            .col-md-4.col-sm-4.col-xs-4.pager-center Page #{pagination.page} of #{pagination.pages}
+            .col-md-4.col-sm-4.col-xs-4.pager-older
                 if pagination.older
-                    a.pull-right(href=$pageUrl(false))
+                    a(href=$pageUrl(false))
                         | Older 
                         i.fa.fa-angle-double-right
