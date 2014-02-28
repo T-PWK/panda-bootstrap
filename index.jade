@@ -9,11 +9,12 @@ block content
             p.blog-post-meta 
                 time(datetime=$date(post), itemprop="datePublished")= $date(post, 'MMMM DD, YYYY')
                 |  by  
-                span(itemprop="author")
+                span(itemprop="author", itemscope, itemtype="http://schema.org/Person")
                     if post.author.website
-                        a(href=post.author.website)= post.author.name
+                        meta(content=post.author.website, itemprop="url")
+                        a(href=post.author.website, rel="author"): span(itemprop="name")= post.author.name
                     else
-                        = post.author.name
+                        span(itemprop="name")= post.author.name
 
             section(itemprop="description articleBody")!= post.teaser
 
