@@ -13,15 +13,14 @@ block content
         footer.blog-post-footer
             .row
                 .col-md-7.col-sm-8
-                    .media
-                        a.pull-left(href="#")
-                            img.img-circle.img-thumbnail.media-object.blog-author-img(src=author.image)
+                    .media(itemprop="author", itemscope, itemtype="http://schema.org/Person")
+                        a.pull-left(href=author.website, itemprop="url")
+                            img.img-circle.img-thumbnail.media-object.blog-author-img(src=author.image, itemprop="image")
                         .media-body
                             h4.media-heading Written By
-                            p: small: strong= author.name
-
+                            p: small: strong(itemprop="name")= author.name
                             if author.bio
-                                p.text-muted: small: em= author.bio
+                                p.text-muted: small: em(itemprop="description")= author.bio
 
                 .col-md-4.col-md-offset-1.col-sm-4
                     h4 Share this post
