@@ -145,9 +145,6 @@ h6, .h6 {
 .blog-post {
   margin-bottom: 60px;
 }
-.blog-post img {
-  width: 100%;
-}
 .blog-post-title {
   margin-bottom: 5px;
   font-size: 40px;
@@ -184,4 +181,9 @@ h6, .h6 {
   margin: 4rem 0 0 0;
   padding: 4rem 0 0 0;
   border-top: #EBF2F6 1px solid;
+}
+
+.blog-author-img {
+  width: 64px;
+  height: 64px;
 }
