@@ -9,6 +9,13 @@ html
 
         link(rel="shortcut icon", href="/assets/ico/favicon.ico")
 
+        //- Google Webmaster pagination hints
+        if pagination
+            if pagination.newer
+                meta(rel="prev", href=$pageUrl(true, true))
+            if pagination.older
+                meta(rel="next", href=$pageUrl(false, true))
+
         title= metaTitle
 
         //- Bootstrap core CSS
