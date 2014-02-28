@@ -37,10 +37,6 @@ a, a:hover {
   border-color: #cc3d33;
 }
 
-@media (min-width: 768px) {
-  .pager
-}
-
 /*
  * Masthead for nav
  */
