@@ -6,7 +6,7 @@ block content
         p.blog-post-meta 
             time(datetime=$date(post), itemprop="datePublished")= $date(post, 'MMMM DD, YYYY')
             |  by  
-            a(itemprop="author", href="#")= post.author.name
+            a(href=author.website)= post.author.name
 
         section(itemprop="description articleBody")!= post.content
 
@@ -20,6 +20,7 @@ block content
                         .media-body
                             h4.media-heading Written By
                             h4: strong(itemprop="name")= author.name
+
                             if author.bio
                                 p.text-muted: small: em(itemprop="description")= author.bio
 
