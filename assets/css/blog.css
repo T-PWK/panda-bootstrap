@@ -29,6 +29,10 @@ h6, .h6 {
   }
 }
 
+@media (min-width: 768px) {
+  .pager
+}
+
 /*
  * Masthead for nav
  */
@@ -123,8 +127,15 @@ h6, .h6 {
 /* Pagination */
 .pager {
   margin-bottom: 60px;
-  text-align: left;
+  text-align: center;
   color: #999
+}
+
+.pager .pager-newer {
+  text-align: left;
+}
+.pager .pager-older {
+  text-align: right;
 }
 
 /*
@@ -133,9 +144,6 @@ h6, .h6 {
 
 .blog-post {
   margin-bottom: 60px;
-}
-.blog-post img {
-  width: 100%;
 }
 .blog-post-title {
   margin-bottom: 5px;
@@ -173,4 +181,9 @@ h6, .h6 {
   margin: 4rem 0 0 0;
   padding: 4rem 0 0 0;
   border-top: #EBF2F6 1px solid;
+}
+
+.blog-author-img {
+  width: 64px;
+  height: 64px;
 }
