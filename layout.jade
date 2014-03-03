@@ -20,7 +20,9 @@ html
 
         //- Awesome fonts
         link(href="/shared/css/font-awesome.min.css", rel="stylesheet")
-        link(href="//fonts.googleapis.com/css?family=Open+Sans:400,300,700", rel="stylesheet")
+
+        link(href="//fonts.googleapis.com/", rel="dns-prefetch")
+        link(href="//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin,latin-ext", rel="stylesheet")
         
         //- Bootstrap core CSS
         link(href="/assets/css/bootstrap.min.css", rel="stylesheet")
@@ -59,13 +61,14 @@ html
                     //-         if post
                     //-             img(src=author.image, style="display:block;")
                     //-         =author.bio
-                    if archives
+                    if archives && archives.length
                         .sidebar-module.sidebar-module-inset
                             h4 Archives
                             ol.list-unstyled
                                 each archive in archives
-                                    li: a(href=$date(archive.date, '/YYYY/MM'))= $date(archive.date, 'MMMM, YYYY')
-                    if labels
+                                    li: a(href=$date(archive.date, '/YYYY/MM'))
+                                        = $date(archive.date, 'MMMM, YYYY')
+                    if labels && labels.length
                         .sidebar-module.sidebar-module-inset
                             h4 Labels
                             ul.list-inline

@@ -8,13 +8,16 @@ block content
             h2.blog-post-title(itemprop="name", title=post.title): a(href= $url(post), itemprop="url")= post.title
             p.blog-post-meta 
                 time(datetime=$date(post), itemprop="datePublished")= $date(post, 'MMMM DD, YYYY')
-                |  by  
-                span(itemprop="author", itemscope, itemtype="http://schema.org/Person")
-                    if post.author.website
-                        meta(content=post.author.website, itemprop="url")
-                        a(href=post.author.website, rel="author"): span(itemprop="name")= post.author.name
-                    else
-                        span(itemprop="name")= post.author.name
+
+                //- Display author data if available
+                if post.author
+                    |  by   
+                    span(itemprop="author", itemscope, itemtype="http://schema.org/Person")
+                        if post.author.website
+                            meta(content=post.author.website, itemprop="url")
+                            a(href=post.author.website, rel="author"): span(itemprop="name")= post.author.name
+                        else
+                            span(itemprop="name")= post.author.name
 
             section(itemprop="description articleBody") !{post.teaser}&hellip;
 
