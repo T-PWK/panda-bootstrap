@@ -3,19 +3,23 @@ extends layout
 block content
     .blog-post(itemscope, itemtype="http://schema.org/BlogPosting")
         h2.blog-post-title(itemprop="name")= post.title
-        p.blog-post-meta 
+        p.blog-post-meta
             time(datetime=$date(post), itemprop="datePublished")= $date(post, 'MMMM DD, YYYY')
-            //- Display author if author available
+
+            //- Display author if available
             if post.author
                 |  by  
-                a(href=author.website)= post.author.name
+                if post.author.website
+                    a(href=author.website)= post.author.name
+                else
+                    = post.author.name
 
         section(itemprop="description articleBody")!= post.content
 
         footer.blog-post-footer
             .row
                 .col-md-7.col-sm-8
-                    //- Display author if author available
+                    //- Display author if available
                     if post.author
                         .media(itemprop="author", itemscope, itemtype="http://schema.org/Person")
                             meta(content=author.website, itemprop="url")
