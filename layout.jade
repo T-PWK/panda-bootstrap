@@ -1,13 +1,20 @@
+- var links = [{href='/shared/css/font-awesome.min.css', rel='stylesheet'}, {href='//fonts.googleapis.com/', rel='dns-prefetch'}, {href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin,latin-ext', rel='stylesheet'}, {href='/assets/ico/favicon.ico', rel='shortcut icon'}]
 doctype html
 html
     head
+        //- Awesome fonts
+        each link in links
+            link(href=link.href, rel=link.rel)
+
+        //link(href="/shared/css/font-awesome.min.css", rel="stylesheet")
+        //link(href="//fonts.googleapis.com/", rel="dns-prefetch")
+        //link(href="//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin,latin-ext", rel="stylesheet")
+
         meta(charset="utf-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1")
         meta(name="description", content= metaDescription)
         meta(name="author", content="")
-
-        link(rel="shortcut icon", href="/assets/ico/favicon.ico")
 
         //- Google Webmaster pagination hints
         if pagination
@@ -18,18 +25,12 @@ html
 
         title= metaTitle
 
-        //- Awesome fonts
-        link(href="/shared/css/font-awesome.min.css", rel="stylesheet")
-
-        link(href="//fonts.googleapis.com/", rel="dns-prefetch")
-        link(href="//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin,latin-ext", rel="stylesheet")
-        
         //- Bootstrap core CSS
         link(href="/assets/css/bootstrap.min.css", rel="stylesheet")
-        
+
         //- Custom styles for this template
         link(href="/assets/css/blog.css", rel="stylesheet")
-        
+
         //- <!-- Just for debugging purposes. Don't actually copy this line! -->
         //- <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
